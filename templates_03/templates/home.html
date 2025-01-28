@@ -1,0 +1,14 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %}Home Page{% endblock title %}
+
+{% block herosection %}Hero code{% endblock herosection %}
+
+{% block content %}
+<h1 >{{name}}</h1>
+<h1>Home Page - {{nm}}</h1>
+{% endblock content %}
+
+{% comment %} {% include 'layouts/header.html' %}
+<h1>Home Page</h1>
+{% include 'layouts/footer.html' %} {% endcomment %}

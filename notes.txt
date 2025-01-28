@@ -6,3 +6,8 @@
 # You can easily generate this file with the following: pip freeze > requirements.text You can then install the virtualenv packages on the target machine with: pip install -r requirements.txt
 
 # It is important to note that including the virtualenv will often not work at all as it may contain full paths for your local system. It is much better to use a requirements.txt file.
+
+# python manage.py makemigrations
+# python manage.py migrate
+# python manage.py sqlmigrate templates_03 0001
+# python manage.py showmigrations 

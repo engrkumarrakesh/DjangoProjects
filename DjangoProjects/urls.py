@@ -4,11 +4,13 @@ from django.urls import path, include
 
 
 urlpatterns = [
+    # path('jet/', include('jet.urls', 'jet')),
     path('admin/', admin.site.urls),
     path('', include('function_based_view_01.urls')),
     path('url_patterns_02/', include('url_patterns_02.urls')),
     # path('app_name/', include('url_patterns_02.urls')),
     path('templates/', include('templates_03.urls')),
+    path('crud/', include('CRUD.urls')),
 ]
 
 # handler404 = 'function_based_view_01.views.notfound' # This is the function that will be called when a 404 error is raised

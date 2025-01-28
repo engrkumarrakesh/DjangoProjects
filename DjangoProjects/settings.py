@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 
+import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -33,6 +35,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'admin_interface',
     'colorfield',
+    # 'jet',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +45,8 @@ INSTALLED_APPS = [
     'function_based_view_01',
     'url_patterns_02',
     'templates_03',
+    'CRUD'
+    
     
     
 ]
@@ -58,10 +63,22 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'DjangoProjects.urls'
 
+# Template directory settings
+# Base directory of the project
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Custom template directories
+# TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates/local')
+# OSCAR_TEMP_DIR = os.path.join(BASE_DIR, 'templates/oscar')
+# TEMP_DIR = os.path.join(BASE_DIR, 'templates')
+MAIN_TEMP_DIR = os.path.join(BASE_DIR, 'templates')
+# CRUD_TEMP_DIR = os.path.join(BASE_DIR, 'CRUD/templates')
+# TEMPLATES03_TEMP_DIR = os.path.join(BASE_DIR, 'templates_03/templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [MAIN_TEMP_DIR,],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,7 +100,7 @@ WSGI_APPLICATION = 'DjangoProjects.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
 
@@ -123,7 +140,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = ['static']
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
