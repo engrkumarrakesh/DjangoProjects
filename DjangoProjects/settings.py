@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'templates_03',
     'CRUD',
     'CRUD2',
+    'ReviewBook',
+    'django.contrib.humanize',
     
     
     

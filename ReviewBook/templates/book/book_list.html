@@ -1,0 +1,38 @@
+{% extends 'book/base.html' %}
+
+{% block title %}Book List{% endblock title %}
+
+
+{% block content %}
+{% comment %} <div class="row mb-4">
+    <div class="col-md-10">
+        <div class="btn-group">
+            <a href="{% url 'book_list' %}" class="btn btn-outline-primary btn-sm {% if not request.GET.genres %}active{% endif %}">All Books</a>
+            <a href="?genres=Science" class="btn btn-outline-primary btn-sm {% if request.GET.genres %}active{% endif %}">Science</a>
+            <a href="?genres=fiction" class="btn btn-outline-primary btn-sm {% if request.GET.genres %}active{% endif %}">Fiction</a>
+            <a href="?genres=Non-Fiction" class="btn btn-outline-primary btn-sm {% if request.GET.genres %}active{% endif %}">Non-Fiction</a>
+            <a href="?genres=History" class="btn btn-outline-primary btn-sm {% if request.GET.genres %}active{% endif %}">History</a>
+            <a href="?genres=biography" class="btn btn-outline-primary btn-sm {% if request.GET.genres %}active{% endif %}">Biography</a>
+            
+        </div>
+    </div>
+</div> {% endcomment %}
+<div class="row">
+    {% for book in books %}
+    <div class="col-md-4">
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ book.title }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">By {{ book.author }}</h6>
+                <p class="card-text">{{ book.description | truncatewords:50 }}</p>
+                <a href="{% url 'book_detail' book.pk %}" class="btn btn-primary btn-sm">View Details</a>
+            </div>  
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-md-12">
+        <h3 class="text-center text-danger">No Books available</h3>
+    </div>
+    {% endfor %}
+</div>  
+{% endblock content %}  

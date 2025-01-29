@@ -1,0 +1,37 @@
+{% extends 'book/base.html' %}
+{% block title %}Create Book{% endblock title %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-10 offset-1">
+        <h3 class="text-center alert alert-success">Create New Books</h3>
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            {% comment %} {% for val in value_list %}
+            <input type='text' value='{{ val }}' name='my_list'/>{{ val }}
+            {% empty %}
+            <p>No values available</p> {% endcomment %}
+            {{form.as_p}}
+            {% comment %} {{form.as_p}} {% endcomment %}
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-2">
+                        <button type="submit" class="btn btn-success">Create Book</button>
+                    </div>
+                    <div class="col-md-10">
+                        {% if messages %}
+                            {% for msg in messages %}
+                            <div style="padding:6px 10px 6px 9px" class="alert alert-{{ msg.tags }} alert-dismissible fade show" role="alert">
+                                {{ msg }}
+                                <button style="padding:16px 2px 6px 9px, font-size: 12px;" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                            {% endfor %} 
+                            {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+        </form>
+        
+    </div>
+</div>
+{% endblock content %}

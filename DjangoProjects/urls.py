@@ -12,6 +12,7 @@ urlpatterns = [
     path('templates/', include('templates_03.urls')),
     path('crud/', include('CRUD.urls')),
     path('crud2/', include('CRUD2.urls')),
+    path('reviewbook/', include('ReviewBook.urls')),
 ]
 
 # handler404 = 'function_based_view_01.views.notfound' # This is the function that will be called when a 404 error is raised
