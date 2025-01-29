@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+{% comment %} <h1>{{id}}</h1> {% endcomment %}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <h3 class="text-center alert alert-success">Update Employee</h3>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}} 
+             {% comment %} #.as_p for paragraph display {% endcomment %}
+            <input type="submit" class="btn btn-success" value="Update">
+            <a href="{% url 'create' %}" class="btn btn-info">Back To Home</a>
+        </form>
+    </div>
+</div>
+{% endblock content %}

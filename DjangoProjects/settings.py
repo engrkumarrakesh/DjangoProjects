@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'function_based_view_01',
     'url_patterns_02',
     'templates_03',
-    'CRUD'
+    'CRUD',
+    'CRUD2',
     
     
     
