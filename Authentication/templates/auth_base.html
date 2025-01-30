@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Authentication{% endblock title %}</title>
+    {% comment %} <script src="https://cdn.tailwindcss.com"></script> {% endcomment %}
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    {% comment %} <style type="text/tailwindcss">
+        @theme {
+          --color-clifford: #da373d;
+        }
+    </style> {% endcomment %}
+</head>
+<body flex flex-col min-h-screen>
+    <header>
+        <nav class="bg-gray-800 text-white">
+            <div class="mx-w-screen-xl flex flex-wrap items-center justify-between p-4 mx-auto">
+                <a href="#" class="flex items-center  text-2xl font-semibold dark:text-white">
+                    <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
+                   Auth System   
+                </a>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                    <ul class="font-medium flex flex-row space-x-8">
+                        <li>
+                            <a href="#" class="block py-2 px-3" aria-current="page">Home</a>
+                        </li>
+                        {%if user.is_authenticated%}
+                        <li>
+                            <a href="#" class="block py-2 px-3" aria-current="page">Dashboard</a>
+                        </li>
+                        <li>
+                            <form method="post" action="#">
+                                {% csrf_token %}
+                                <button type="submit" class="block py-2 px-3">Logout</button>
+                            </form>
+                        </li>
+                        {%else%}
+                        <li>
+                            <a href="#" class="block py-2 px-3" aria-current="page">Register</a>
+                        </li>
+                        <li>
+                            <a href="#" class="block py-2 px-3" aria-current="page">Login</a>
+                        </li>
+                        {%endif%}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main class="flex-grow">
+        {% if messages %}
+        <div class="container mx-auto mt-4">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% block content %}
+
+        {% endblock content %}
+    </main>
+    {% comment %} <footer class="bg-gray-800 text-white py-4 mt-auto">
+        <div class="mx-w-screen-xl mx-auto px-4">
+            <p class="text-center">Copyright © 2024 Authentication System. All rights reserved.</p>
+        </div>
+    </footer> {% endcomment %}
+</body>
+</html>

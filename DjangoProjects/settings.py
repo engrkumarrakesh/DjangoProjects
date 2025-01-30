@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'CRUD2',
     'ReviewBook',
     'django.contrib.humanize',
+    'Authentication',
+    'BasicAuth',
+    'authapp01'
     
     
     
