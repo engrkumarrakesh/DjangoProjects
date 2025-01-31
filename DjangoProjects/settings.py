@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    #'unfold',
     'admin_interface',
     'colorfield',
     # 'jet',

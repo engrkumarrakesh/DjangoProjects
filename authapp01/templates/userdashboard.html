@@ -1,0 +1,14 @@
+{% extends 'authapp01_base.html' %}
+{% block title %}User Dashboard{% endblock title %}
+{% block content %}
+<h1 style="text-align:center;" class="text-center mt-5 alert alert-success font-bold">User Dashboard</h1>
+<h2 style="text-align:center;" class="text-center mt-5 alert alert-success font-bold">Welcome {{username}}</h2>
+{% if messages %}
+{% for msg in messages %}
+<div class="alert alert-danger" role="alert">
+    {{ msg }}
+</div>
+{% endfor %}
+{% endif %}
+<a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+{% endblock content %}
