@@ -3,6 +3,17 @@
 {% block content %}
 <h1 style="text-align:center;" class="text-center mt-5 alert alert-success font-bold">User Dashboard</h1>
 <h2 style="text-align:center;" class="text-center mt-5 alert alert-success font-bold">Welcome {{username}}</h2>
+
+
+{% if user != None %}
+<h1>List Of Users</h1>
+{% for u in user %}
+{% comment %} {{u.id}} = {{u.username}} = {{u.email}}<br/> {% endcomment %}
+{{u.id}} = <a href="{% url 'userdetails' u.id %}">{{u.username}}</a> = {{u.email}}<br/>
+{% endfor %}
+
+{% endif %}
+
 {% if messages %}
 {% for msg in messages %}
 <div class="alert alert-danger" role="alert">
@@ -10,5 +21,23 @@
 </div>
 {% endfor %}
 {% endif %}
+<hr>
+<h1>User Profiles</h1>
+<form action="" method="POST" novalidate>
+    {% csrf_token %}
+   {% if  form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+    {% for fm in form %}
+        {{fm.label_tag}} {{fm}} {{fm.errors|striptags }}<br/><br/>
+    {% endfor %}
+
+
+    <input type="submit" class="btn btn-success" value="Update Profile">
+</form>
 <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
+<a href="{% url 'change_password' %}" class="btn btn-danger">Change Password</a>
+<a href="{% url 'changepass_without_old' %}" class="btn btn-danger">Change Password without old password</a>
 {% endblock content %}

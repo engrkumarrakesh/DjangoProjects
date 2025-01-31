@@ -1,0 +1,35 @@
+{% extends 'authapp01_base.html' %}
+
+{% block title %}Change Password Without Old Password{% endblock title %}
+{% block content %}
+
+<h1 class="text-center mt-5 alert alert-success font-bold">Change Password</h1>
+
+<form action="" method="POST" novalidate>
+    {% csrf_token %}
+    {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+    <div class="alert alert-danger" role="alert">
+        {{ error }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    
+    {% for fm in form %}
+        {{fm.label_tag}} {{fm}} {{fm.errors|striptags }}<br/><br/>
+    {% endfor %}
+    <input type="submit" class="btn btn-success" value="Change Password">
+</form>
+
+{% if messages %}
+{% for msg in messages %}
+<div class="alert alert-danger" role="alert">
+    {{ msg }}
+</div>
+{% endfor %}
+{% endif %}
+<a href="{% url 'userdashboard' %}" class="btn btn-success">Go to Dashboard</a>
+<a href="{% url 'signin' %}" class="btn btn-success">Go to Login</a>
+<a href="{% url 'signup' %}" class="btn btn-success">Go to Signup</a>
+<a href="{% url 'logout' %}" class="btn btn-success">Go to Logout</a>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'authapp01_base.html' %}
+
+{% block title %}User Details{% endblock title %}
+
+{% block content %}
+<h1 class="text-center mt-5 alert alert-success font-bold">User Details</h1>
+<form action="" method="POST" novalidate>
+    {% csrf_token %}
+    {{form.as_p}}
+</form>
+<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'userdashboard' %}">Back To Dashboard</a>
+
+{% endblock content %}  
